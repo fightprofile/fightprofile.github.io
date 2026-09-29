@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kacper Śniegowski | MMA / K-1 Fighter Profile</title>
+<meta name="description" content="Kacper Śniegowski — profil zawodnika MMA i K-1. Rekord, statystyki, osiągnięcia i historia walk.">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f3f5;
+    color: #202124;
+}
+
+.topbar {
+    background: #111318;
+    color: white;
+    padding: 16px 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 0 15px;
+}
+
+.profile {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.profile-header {
+    background: #191c22;
+    color: white;
+    padding: 30px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 6px;
+    background: #30343c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+
+.profile-info h1 {
+    font-size: 34px;
+    margin-bottom: 7px;
+}
+
+.location {
+    color: #b8bec8;
+    margin-bottom: 20px;
+}
+
+.record {
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.record span {
+    color: #4caf50;
+}
+
+.record small {
+    font-size: 15px;
+    color: #aaa;
+    font-weight: normal;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: 1px solid #ddd;
+}
+
+.stat {
+    padding: 20px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat strong {
+    display: block;
+    font-size: 22px;
+}
+
+.stat span {
+    color: #777;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    gap: 25px;
+    padding: 15px 25px;
+    border-bottom: 1px solid #ddd;
+    background: white;
+}
+
+.nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav a:hover {
+    color: #d71920;
+}
+
+.content {
+    padding: 25px;
+}
+
+.section {
+    margin-bottom: 35px;
+}
+
+.section h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    border-left: 4px solid #d71920;
+    padding-left: 10px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.fact {
+    padding: 18px;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.fact span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.fact strong {
+    font-size: 17px;
+}
+
+.achievements {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.achievement {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 18px;
+    border-radius: 7px;
+}
+
+.achievement b {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.achievement span {
+    color: #777;
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th {
+    background: #191c22;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 12px;
+}
+
+td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.win {
+    color: #188038;
+    font-weight: 800;
+}
+
+.loss {
+    color: #d93025;
+    font-weight: 800;
+}
+
+.latest {
+    background: #191c22;
+    color: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.latest-label {
+    color: #aaa;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.latest h3 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.latest-result {
+    color: #4caf50;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+footer {
+    text-align: center;
+    color: #888;
+    font-size: 11px;
+    padding: 30px 10px;
+}
+
+@media (max-width: 700px) {
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .facts {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .achievements {
+        grid-template-columns: 1fr;
+    }
+
+    .nav {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 9px 6px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    FIGHT PROFILE
+</div>
+
+<div class="container">
+
+<div class="profile">
+
+    <div class="profile-header">
+
+        <div class="avatar">
+            KS
+        </div>
+
+        <div class="profile-info">
+            <h1>Kacper Śniegowski</h1>
+            <div class="location">Lubań, Poland • MMA / K-1</div>
+
+            <div class="record">
+                <span>15</span> - 1 - 0
+            </div>
+
+            <small>Career Record</small>
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>15</strong>
+            <span>Wins</span>
+        </div>
+
+        <div class="stat">
+            <strong>1</strong>
+            <span>Losses</span>
+        </div>
+
+        <div class="stat">
+            <strong>11</strong>
+            <span>KO/TKO</span>
+        </div>
+
+        <div class="stat">
+            <strong>185 cm</strong>
+            <span>Height</span>
+        </div>
+
+        <div class="stat">
+            <strong>115 kg</strong>
+            <span>Weight</span>
+        </div>
+
+    </div>
+
+    <div class="nav">
+        <a href="#profile">Profile</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#record">Fight Record</a>
+        <a href="#latest">Latest Fight</a>
+    </div>
+
+    <div class="content">
+
+        <section class="section" id="profile">
+
+            <h2>Fighter Profile</h2>
+
+            <div class="card facts">
+
+                <div class="fact">
+                    <span>Full Name</span>
+                    <strong>Kacper Śniegowski</strong>
+                </div>
+
+                <div class="fact">
+                    <span>City</span>
+                    <strong>Lubań, Poland</strong>
+                </div>
+
+                <div class="fact">
+                    <span>Height</span>
+                    <strong>185 cm</strong>
+                </div>
+
+                <div class="fact">
+                    <span>Weight</span>
+                    <strong>115 kg</strong>
+                </div>
+
+                <div class="fact">
+                    <span>MMA Record</span>
+                    <strong>12 - 0 - 0</strong>
+                </div>
+
+                <div class="fact">
+                    <span>K-1 Record</span>
+                    <strong>3 - 1 - 0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section" id="achievements">
+
+            <h2>Achievements</h2>
+
+            <div class="achievements">
+
+                <div class="achievement">
+                    <b>🥇 Mistrz Dolnego Śląska — MMA</b>
+                    <span>Regional championship achievement</span>
+                </div>
+
+                <div class="achievement">
+                    <b>🥈 Wicemistrz Dolnego Śląska — K-1</b>
+                    <span>K-1 championship finalist</span>
+                </div>
+
+                <div class="achievement">
+                    <b>11 KO / TKO Wins</b>
+                    <span>Wins inside the distance</span>
+                </div>
+
+                <div class="achievement">
+                    <b>15 Career Wins</b>
+                    <span>Professional fight record</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section" id="record">
+
+            <h2>Fight Record</h2>
+
+            <div class="card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Opponent</th>
+                            <th>Sport</th>
+                            <th>Result</th>
+                            <th>Method</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>16</td>
+                            <td>Adrian Matuszak</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R2</td>
+                        </tr>
+
+                        <tr>
+                            <td>15</td>
+                            <td>Norbert Pawlak</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>TKO — R2</td>
+                        </tr>
+
+                        <tr>
+                            <td>14</td>
+                            <td>Michał Leśniak</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>DEC</td>
+                        </tr>
+
+                        <tr>
+                            <td>13</td>
+                            <td>Jakub Wrona</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R1</td>
+                        </tr>
+
+                        <tr>
+                            <td>12</td>
+                            <td>Mateusz Zieliński</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>TKO — R1</td>
+                        </tr>
+
+                        <tr>
+                            <td>11</td>
+                            <td>Oskar Maj</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R2</td>
+                        </tr>
+
+                        <tr>
+                            <td>10</td>
+                            <td>Patryk Lis</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>DEC</td>
+                        </tr>
+
+                        <tr>
+                            <td>9</td>
+                            <td>Szymon Kaczor</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R1</td>
+                        </tr>
+
+                        <tr>
+                            <td>8</td>
+                            <td>Filip Król</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>TKO — R2</td>
+                        </tr>
+
+                        <tr>
+                            <td>7</td>
+                            <td>Bartosz Gajda</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R2</td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td>Marek Wrona</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>DEC</td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td>Igor Zaręba</td>
+                            <td>MMA</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R1</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>Damian Rogowski</td>
+                            <td>K-1</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R2</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Łukasz Bielecki</td>
+                            <td>K-1</td>
+                            <td class="win">WIN</td>
+                            <td>DEC</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Paweł Krupa</td>
+                            <td>K-1</td>
+                            <td class="win">WIN</td>
+                            <td>KO — R1</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Marcin Sokołowski</td>
+                            <td>K-1</td>
+                            <td class="loss">LOSS</td>
+                            <td>DEC — FINAL</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <section class="section" id="latest">
+
+            <h2>Latest Fight</h2>
+
+            <div class="latest">
+
+                <div class="latest-label">
+                    Most Recent Bout
+                </div>
+
+                <h3>Kacper Śniegowski vs Adrian Matuszak</h3>
+
+                <div class="latest-result">
+                    WIN — KO — ROUND 2
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Fight Profile
+</footer>
+
+</div>
+
+</body>
+</html>
